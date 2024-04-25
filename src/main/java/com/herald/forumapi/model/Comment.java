@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 public class Comment {
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
     private String comment;
 

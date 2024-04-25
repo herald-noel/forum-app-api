@@ -1,16 +1,18 @@
 package com.herald.forumapi.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
+@Data
 public class Post {
     @Id
     @GeneratedValue
-    private long id;
+    private int id;
 
-    private String post;
+    private String content;
 
     @ManyToOne
     User user;
