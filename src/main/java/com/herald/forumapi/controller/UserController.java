@@ -19,10 +19,19 @@ public class UserController {
 
     @PostMapping("/register")
     public ResponseEntity<User> registerUser(@RequestBody UserDAO userDAO) {
-        return new ResponseEntity<>(userService.registerUser(
+        return new ResponseEntity<>(userService.register(
                 userDAO.getFirstname(),
                 userDAO.getLastname()),
                 HttpStatus.CREATED
         );
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<Object> loginUser(@RequestBody UserDAO userDAO) {
+        User user = userService.login(userDAO.getFirstname(), userDAO.getLastname());
+        if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        return ResponseEntity.ok().body(false);
     }
 }
