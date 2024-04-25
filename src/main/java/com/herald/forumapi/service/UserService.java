@@ -23,4 +23,8 @@ public class UserService {
         Optional<User> userOptional = userRepository.findUserByFirstnameAndLastname(firstname, lastname);
         return userOptional.orElse(null);
     }
+
+    public User getUserById(int id) {
+        return userRepository.findById(id).orElse(null);
+    }
 }
