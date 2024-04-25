@@ -1,9 +1,7 @@
 package com.herald.forumapi.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 import lombok.Data;
 
 import java.util.List;
@@ -19,9 +17,11 @@ public class User {
 
     private String lastname;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     List<Comment> comments;
 
-    @OneToMany
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
     List<Post> posts;
 }
