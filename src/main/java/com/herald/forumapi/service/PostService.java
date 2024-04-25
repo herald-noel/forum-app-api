@@ -48,4 +48,8 @@ public class PostService {
         }
         return false;
     }
+
+    public Post getPost(int id) {
+        return postRepository.findById(id).orElse(null);
+    }
 }
