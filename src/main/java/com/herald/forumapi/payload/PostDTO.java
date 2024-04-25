@@ -1,9 +1,10 @@
 package com.herald.forumapi.payload;
 
+import lombok.Data;
 import lombok.Getter;
 
-@Getter
-public class PostDAO {
+@Data
+public class PostDTO {
     private int userId;
     private String content;
 }
