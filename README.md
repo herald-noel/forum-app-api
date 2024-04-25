@@ -1,5 +1,5 @@
 # Forum App API
-Welcome to the documentation for the Forum App API. This API serves as the backend for a forum application and allows users to perform various actions related to forum topics, posts, and user management.
+Welcome to the documentation for the Forum App API. This API serves as the backend for a forum application and allows users to perform various actions related to forum posts.
 
 The API provides the following endpoints:
 
