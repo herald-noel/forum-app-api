@@ -1,7 +1,7 @@
 package com.herald.forumapi.controller;
 
-import com.herald.forumapi.model.Post;
 import com.herald.forumapi.payload.PostDTO;
+import com.herald.forumapi.payload.PostResponseDTO;
 import com.herald.forumapi.service.PostService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,6 +19,11 @@ public class PostController {
     @PostMapping("/create")
     public ResponseEntity<Boolean> create(@RequestBody PostDTO postDTO) {
         return new ResponseEntity<>(postService.addPost(postDTO.getUserId(), postDTO.getContent()), HttpStatus.OK);
+    }
+
+    @GetMapping("/posts")
+    public ResponseEntity<List<PostResponseDTO>> getAll(@RequestParam int page) {
+        return new ResponseEntity<>(postService.getAllPosts(page), HttpStatus.OK);
     }
 
 }
