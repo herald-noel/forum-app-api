@@ -7,6 +7,8 @@ import com.herald.forumapi.repository.CommentRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 @AllArgsConstructor
 public class CommentService {
@@ -27,5 +29,15 @@ public class CommentService {
         newComment.setComment(comment);
         commentRepository.save(newComment);
         return true;
+    }
+
+    public Boolean deleteComment(int id) {
+        // Check if comment exist
+        Optional<Comment> comment = commentRepository.findById(id);
+        if (comment.isPresent()) {
+            commentRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
