@@ -26,4 +26,8 @@ public class PostController {
         return new ResponseEntity<>(postService.getAllPosts(page), HttpStatus.OK);
     }
 
+    @GetMapping("/delete")
+    public ResponseEntity<Boolean> delete(@RequestParam int id) {
+        return new ResponseEntity<>(postService.deletePost(id), HttpStatus.OK);
+    }
 }

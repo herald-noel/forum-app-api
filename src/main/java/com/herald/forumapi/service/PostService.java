@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -37,5 +38,14 @@ public class PostService {
         return posts.stream()
                 .map(post -> new PostResponseDTO(post.getId(), post.getContent()))
                 .toList();
+    }
+
+    public Boolean deletePost(int id) {
+        Optional<Post> postOptional = postRepository.findById(id);
+        if (postOptional.isPresent()) {
+            postRepository.delete(postOptional.get());
+            return true;
+        }
+        return false;
     }
 }
